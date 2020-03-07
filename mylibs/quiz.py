@@ -1,4 +1,21 @@
 
+def add(*args):
+    accum = 0 
+    for i in args:
+        accum += i
+        #print(i)
+    
+
+    def hello():
+        print("Hello") 
+
+    hello()
+
+    return accum
+
+
+
+
 def quiz(user_name):
     print('Hello %s!!!!!' % user_name)
     value = 0
