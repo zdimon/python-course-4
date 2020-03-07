@@ -1,0 +1,62 @@
+<h2>Работа с датой.</h2>
+
+<p>Текущая дата.</p>
+
+<pre><code>import datetime
+from time import strftime
+print("Current date")
+print(datetime.datetime.now())
+print(datetime.datetime.now().time())
+</code></pre>
+
+<h3>Форматирование даты.</h3>
+
+<pre><code>now = datetime.datetime.now()
+now.strftime("%Y-%m-%d %H:%M")
+</code></pre>
+
+<h3>Прибавление к дате дней.</h3>
+
+<pre><code>from datetime import timedelta
+d = now - timedelta(days=6)
+</code></pre>
+
+<h3>timedelta()</h3>
+
+<pre><code>datetime.timedelta(microseconds=1)
+datetime.timedelta(milliseconds=1)
+datetime.timedelta(seconds=1)
+datetime.timedelta(minutes=1)
+datetime.timedelta(hours=1)
+datetime.timedelta(days=1)
+datetime.timedelta(weeks=1)
+</code></pre>
+
+<h3>Прибавление месяцев (модуль dateutil).</h3>
+
+<pre><code>from dateutil.relativedelta import relativedelta
+date_after_month = datetime.datetime.today() + relativedelta(months=1)
+print ('Today: %s' % datetime.datetime.today().strftime('%d/%m/%Y'))
+print ('After Month: %s' % date_after_month.strftime('%d/%m/%Y'))
+</code></pre>
+
+<h3>Атрибуты объекта даты.</h3>
+
+<pre><code>import datetime
+today = datetime.date.today()
+print ('Year: %s' % today.year)
+print ('Mon : %s' % today.month)
+print ('Day : %s' % today.day)
+</code></pre>
+
+<h3>Замена параметров даты.</h3>
+
+<pre><code>print(date_after_month.replace(year=2000))
+</code></pre>
+
+<h3>Сравнение</h3>
+
+<pre><code>t1 = datetime.time(14, 55, 0)
+t2 = datetime.time(13,56,0)
+print(t1&lt;t2)
+</code></pre>

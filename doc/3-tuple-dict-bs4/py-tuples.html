@@ -1,0 +1,87 @@
+<h2>Кортежи</h2>
+
+<p>Это неизменяемая последовательность из неизменяемых объектов Python.</p>
+
+<pre><code>tup1 = ('physics', 'chemistry', 1997, 2000)
+tup2 = (1, 2, 3, 4, 5 )
+tup3 = "a", "b", "c", "d
+</code></pre>
+
+<p>Кортеж, состоящий из одного элемента должен сожержать запятую.</p>
+
+<pre><code>tup1 = (50,)
+</code></pre>
+
+<h3>Доступ к значениям кортежа.</h3>
+
+<pre><code>print tup1[0]
+print tup2[1:5]
+</code></pre>
+
+<p>Вы не можете изменить кортеж либо значения его элементов.
+Вы можете только извлекать из него один или несколько значений, создавая новый кортеж.</p>
+
+<pre><code>#!/usr/bin/python
+
+tup1 = (12, 34.56);
+tup2 = ('abc', 'xyz');
+
+# Following action is not valid for tuples
+# tup1[0] = 100;
+
+# So let's create a new tuple as follows
+tup3 = tup1 + tup2;
+print tup3
+</code></pre>
+
+<h3>Удаление элементов.</h3>
+
+<p>Невозможно.</p>
+
+<p>Вы можете только удалить весь кортеж целиком.</p>
+
+<pre><code>tup = ('physics', 'chemistry', 1997, 2000);
+del tup;
+</code></pre>
+
+<h3>Basic Tuples Operations</h3>
+
+<p>Tuples respond to the + and * operators much like strings.</p>
+
+<p>len((1, 2, 3))  3   Length
+(1, 2, 3) + (4, 5, 6)   (1, 2, 3, 4, 5, 6)  Concatenation
+('Hi!',) * 4    ('Hi!', 'Hi!', 'Hi!', 'Hi!')    Repetition
+3 in (1, 2, 3)  True    Membership
+for x in (1, 2, 3): print x,    1 2 3   Iteration</p>
+
+<h3>Встроенные функции кортежей.</h3>
+
+<p>Сравнение двух кортежей.</p>
+
+<pre><code>cmp(tuple1, tuple2)
+</code></pre>
+
+<p>Длинна.</p>
+
+<pre><code>len(tuple)
+</code></pre>
+
+<p>Максимальное значение.</p>
+
+<pre><code>max(tuple)
+</code></pre>
+
+<p>Минимальное значение.</p>
+
+<pre><code>min(tuple)
+</code></pre>
+
+<p>Преобразование списка в кортеж.</p>
+
+<pre><code>tuple(seq)
+</code></pre>
+
+<h3>Использование кортежа как ключа словаря.</h3>
+
+<pre><code>d = {(1, 1, 1) : 1}
+</code></pre>

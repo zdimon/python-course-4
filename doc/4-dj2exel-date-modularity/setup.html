@@ -1,0 +1,168 @@
+<h2>Создание проекта.</h2>
+
+<h2>Создание папки проекта.</h2>
+
+<pre><code>mkdir exel
+cd exel
+</code></pre>
+
+<h2>Виртуальное окружение</h2>
+
+<p><strong>установка в систему нужных команд (установщик python pip и virtualenv)</strong></p>
+
+<pre><code>sudo apt-get install python3-pip virtualenv
+</code></pre>
+
+<p><strong>установка виртуального окружения в проект</strong></p>
+
+<pre><code>virtualenv -p python3 venv
+</code></pre>
+
+<ul>
+<li>создается папка venv где будут requirements-ы, которую обычно игнорят в git.</li>
+</ul>
+
+<h2>Активация виртуального окружения</h2>
+
+<pre><code>. ./venv/bin/activate
+</code></pre>
+
+<p><strong>появляется приставка (venv) в начале коммандной строки что значит что окружение активировано и 
+мы можем устанавливать в него необходимы пакеты</strong></p>
+
+<h2>Установка Django</h2>
+
+<pre><code>pip install django
+</code></pre>
+
+<h2>Создание нового проекта</h2>
+
+<pre><code>django-admin startproject prj
+</code></pre>
+
+<h2>Создание приложения</h2>
+
+<pre><code>cd djangoprj
+./manage.py startapp main
+</code></pre>
+
+<h2>Прописываем название нового приложения в настройках djangoprj/settings.py</h2>
+
+<pre><code>INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'main'
+]
+</code></pre>
+
+<h2>Запуск сервера разработки.</h2>
+
+<pre><code>./manage.py runserver 9898
+</code></pre>
+
+<h2>Установка системных библиотек для работы с MySQL.</h2>
+
+<pre><code>sudo apt-get install python3-dev libmysqlclient-dev build-essential
+</code></pre>
+
+<h2>Установка клиента MySQL.</h2>
+
+<pre><code>pip install mysqlclient
+</code></pre>
+
+<h2>Прописываем коннект r базе в settings.py.</h2>
+
+<pre><code>DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'read_default_file': './prj/my.cnf',
+        },
+    }
+}
+</code></pre>
+
+<h2>Файл prj/my.cnf</h2>
+
+<pre><code>[client]
+database = locotrade_new
+user = root
+password = password
+default-character-set = utf8
+</code></pre>
+
+<h2>Создаем файл с классами моделей существующей БД.</h2>
+
+<pre><code>./manage.py inspectdb &gt; out-models.py
+</code></pre>
+
+<h2>Скопируем из файла out-models.py класс с пользователями в файл main/models.py.</h2>
+
+<pre><code>class Users(models.Model):
+    email = models.CharField(unique=True, max_length=191)
+    password = models.CharField(max_length=191)
+    active = models.IntegerField()
+    remember_token = models.CharField(max_length=100, blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, null=True)
+    updated_at = models.DateTimeField(blank=True, null=True)
+    deleted_at = models.DateTimeField(blank=True, null=True)
+    first_name = models.CharField(max_length=191, blank=True, null=True)
+    last_name = models.CharField(max_length=191, blank=True, null=True)
+    phone = models.CharField(max_length=191, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'users'
+</code></pre>
+
+<h2>Создадим новую команду.</h2>
+
+<pre><code>cd main
+mkdir  management
+touch management/__init__.py
+mkdir management/command
+touch management/command/__init__.py
+touch management/command/load_users.py
+</code></pre>
+
+<p>Файл load_users.py.</p>
+
+<p>from django.core.management.base import BaseCommand, CommandError</p>
+
+<p>class Command(BaseCommand):</p>
+
+<pre><code>def handle(self, *args, **options):
+    print('Load Users')
+</code></pre>
+
+<h2>Запуск команды.</h2>
+
+<pre><code>./manage.py load_users
+</code></pre>
+
+<h2>Проходим циклом по таблице с пользователями.</h2>
+
+<pre><code>print('Load Users')
+for user in Users.objects.all():
+    print(user.email)
+</code></pre>
+
+<h2>Установка библиотеки для работы с xls файлами НА ЗАПИСЬ!.</h2>
+
+<p><a href="https://pypi.org/project/xlwt/">Документация</a></p>
+
+<pre><code>pip install xlwt
+</code></pre>
+
+<h2>Создание файла exel.</h2>
+
+<pre><code>wb = xlwt.Workbook()
+ws = wb.add_sheet('A Test Sheet')
+ws.write(0, 0, 'Hello world!!!')
+ws.write(0, 1, 12345)
+wb.save('example.xls')')
+</code></pre>

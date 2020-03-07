@@ -1,0 +1,95 @@
+slug: python-os-string
+name: Урок 2. Файловая система. Строки.
+meta_title:  Файловая система. Строки.
+meta_keywords:  Файловая система. Строки.
+meta_description:  Файловая система. Строки.
+is_active: true
+desc: |
+
+    Работа с файловой системой. 
+    Манипуляции со строками.
+        
+files:
+
+    -
+        file:     'bash-alias.md'
+        title: 'Консоль. Алиасы.'
+        meta_title: 'Консоль. Алиасы.'
+        meta_description:   'Консоль. Алиасы.'
+        meta_keywords: 'bash alias'
+        desc: |
+
+    -
+        file:     'python-os.md'
+        title: 'Файлы, каталоги.'
+        meta_title: 'Файлы, каталоги.'
+        meta_description:   'Файлы, каталоги.'
+        meta_keywords: 'python os dir file'
+        desc: |
+        
+            - содержимое каталога
+            
+            - работа с путями
+            
+            - проверка на существование файла\каталога
+    
+            - чтение файов
+            
+            - запуск скриптов
+            
+            
+    -
+        file:     'python-string.md'
+        title: 'Строки.'
+        meta_title: 'Строки.'
+        meta_description:   'Строки.'
+        meta_keywords: 'python string'
+        desc: |
+        
+            - форматирование
+            
+            - изменение
+            
+            - разбиение\слияние
+    
+            - поиск
+            
+    -
+        file:     'python-string-home.md'
+        title: 'Домашнее задание. Строки.'
+        meta_title: 'Домашнее задание. Строки.'
+        meta_description:   'Домашнее задание. Строки.'
+        meta_keywords: 'home assignment python string'
+        desc: |
+        
+        
+    -
+        file:     'python-list.md'
+        title: 'Списки.'
+        meta_title: 'Списки.'
+        meta_description:   'Списки.'
+        meta_keywords: 'python list'
+        desc: |
+            
+            - изменение
+            
+            - работа с элементами списка
+    
+            
+    -
+        file:     'python-list-home.md'
+        title: 'Домашнее задание. Списки.'
+        meta_title: 'Домашнее задание. Списки.'
+        meta_description:   'Домашнее задание. Списки.'
+        meta_keywords: 'home list python'
+        desc: |        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+

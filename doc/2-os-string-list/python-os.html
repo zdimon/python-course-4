@@ -1,0 +1,113 @@
+<h1>Библиотека os. Работа с файловой системой.</h1>
+
+<p><a href="https://pythonworld.ru/moduli/modul-os.html">Ссылка на официальную документацию</a></p>
+
+<pre><code>import os
+print('OS module!')
+print(__file__)
+print(os.path.realpath(__file__))
+print(os.path.dirname(os.path.realpath(__file__)))
+</code></pre>
+
+<p>Вывод </p>
+
+<pre><code>OS module!
+os-exmpl.py
+/home/zdimon/storage1/www/wm_ve/data/python-beginner/ru/2-os-string/code/os-exmpl.py
+/home/zdimon/storage1/www/wm_ve/data/python-beginner/ru/2-os-string/code
+</code></pre>
+
+<p><strong>os.path.realpath</strong> - абсолютный путь с именем файла
+<strong>os.path.dirname</strong> - абсолютный путь без имени файла</p>
+
+<h2>Текущая рабочая директория.</h2>
+
+<pre><code>path = os.getcwd()
+</code></pre>
+
+<h2>Создание и удаление директорий.</h2>
+
+<pre><code>newdir = 'new'
+os.mkdir(newdir)
+</code></pre>
+
+<p>Если нужно создать сразу структуру директорий.</p>
+
+<pre><code>path = "year/month/week/day"
+os.makedirs(path)
+</code></pre>
+
+<p>Удаление одной директории.</p>
+
+<pre><code>os.rmdir(path)
+</code></pre>
+
+<p>Если нужно удалить непустую директорию то можно использовать модуль <strong>shutil</strong>.</p>
+
+<pre><code>import shutil
+shutil.rmtree('/folder_name')
+</code></pre>
+
+<p>Проверка на существование директории.</p>
+
+<pre><code>if os.path.isdir('year'):
+    print("Deleting year dir")
+    shutil.rmtree('year')
+</code></pre>
+
+<h2>Работа с путями.</h2>
+
+<p><a href="https://pythonworld.ru/moduli/modul-os.html">Ссылка на официальную документацию</a></p>
+
+<p><strong>os.path.join(path1[, path2[, ...]])</strong> - соединяет пути с учётом особенностей операционной системы.</p>
+
+<p><strong>os.path.getsize(path)</strong> - размер файла в байтах.</p>
+
+<h2>Работа с файлами.</h2>
+
+<h3>Создадим в цикле несколько непустых файлов, записав в них случайное число от 100 до 200.</h3>
+
+<pre><code>import random
+
+for i in range(0,5):
+    rnd = random.randint(100, 200)
+    f = open(str(rnd)+'.txt','w')
+    f.write(str(rnd))
+    f.close()
+</code></pre>
+
+<p>При открытии файла необходимо указать режим открытия:</p>
+
+<ul>
+<li><strong>r r+</strong> - для чтения и чтения + записи </li>
+<li><strong>w w+</strong> - открытие для записи w+ - создаст новый пустой если не существует</li>
+<li><strong>a a+</strong> -  открыть для добавления в конец файла (позиционирует курсор в конец)</li>
+</ul>
+
+<p><strong>random.randint(A, B)</strong> - случайное целое число N, A ≤ N ≤ B.</p>
+
+<p><a href="https://pythonworld.ru/moduli/modul-random.html">Документация по random</a></p>
+
+<h2>Открытие оператором <strong>with</strong>. Чтение файла.</h2>
+
+<pre><code>with open('147.txt','r') as f:
+    data = f.read()
+    print("Data is %s" % data)
+</code></pre>
+
+<h2>Получение содержимого директории.</h2>
+
+<pre><code>print("List directory")
+lst = os.listdir('.')
+print(lst)
+</code></pre>
+
+<p>Определение файла или директории.</p>
+
+<pre><code>data = os.listdir('.')
+for d in data:
+    if os.path.isdir(d):
+        print("Directory is %s" % d)
+    else:
+        print("File is %s" % d)
+</code></pre>

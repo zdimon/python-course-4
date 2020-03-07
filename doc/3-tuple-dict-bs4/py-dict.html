@@ -1,0 +1,187 @@
+<h2>Словари.</h2>
+
+<p>Перечисляемые структуры данных, определяемые в виде пар ключ - значение внутри фигурных скобок 
+через двоеточие и разделенных запятой.</p>
+
+<h2>Доступ к значениям элементов словаря по ключу.</h2>
+
+<pre><code>#!/usr/bin/python
+
+dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+
+print dict['Name']
+</code></pre>
+
+<p>Ключ может быть числом.</p>
+
+<pre><code>dict = {1: 'one', 2: 'two'}
+print dict[1]
+print dict[3]
+
+Traceback (most recent call last):
+  File "dict_ex.py", line 3, in &lt;module&gt;
+    print dict[3]
+KeyError: 3
+</code></pre>
+
+<p>Безопасное извлечение.</p>
+
+<pre><code>print dict.get(3,'no')
+</code></pre>
+
+<h3>Изменение словаря</h3>
+
+<pre><code>dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+
+dict['Age'] = 8; # update existing entry
+dict['School'] = "DPS School"; # Add new entry
+</code></pre>
+
+<h3>Удаление элементов из словаря.</h3>
+
+<pre><code>dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+
+del dict['Name']; # remove entry with key 'Name'
+dict.clear();     # remove all entries in dict
+del dict ;        # delete entire dictionary
+</code></pre>
+
+<h3>Ключ должен быть неизменяемым объектом.</h3>
+
+<pre><code>dict = {['Name']: 'Zara', 'Age': 7}
+
+
+Traceback (most recent call last):
+   File "test.py", line 3, in &lt;module&gt;
+      dict = {['Name']: 'Zara', 'Age': 7};
+TypeError: list objects are unhashable
+</code></pre>
+
+<h3>Встроенные функции работы со словарем.</h3>
+
+<p>Создание словаря.</p>
+
+<pre><code>md = dict(name='Vova', age=23)
+
+print(md)
+</code></pre>
+
+<h3>Длинна словаря</h3>
+
+<pre><code>len(dict)
+</code></pre>
+
+<h3>Строковое представление.</h3>
+
+<pre><code>str(dict)
+type(variable)
+</code></pre>
+
+<h3>Создание словаря из 2 списков функцией zip.</h3>
+
+<pre><code>d1 = ['one', 'two', 'three']
+d2 = [1, 2, 3]
+d3 = dict(zip(d1,d2))
+print(d3 
+
+&gt;&gt; {'three': 3, 'two': 2, 'one': 1}
+</code></pre>
+
+<h3>Встроенные методы словарей.</h3>
+
+<pre><code>dict.clear() # очистить
+dict.copy() # склонировать (сделать копию)
+
+
+
+
+dict.fromkeys(seq[, value])
+</code></pre>
+
+<p>Create a new dictionary with keys from seq and values set to value.</p>
+
+<pre><code>seq = ('name', 'age', 'sex')
+val = (10,20,30)
+dict = dict.fromkeys(seq,val)
+print dict
+&gt;&gt; {'age': (10, 20, 30), 'name': (10, 20, 30), 'sex': (10, 20, 30)}
+
+dict.get(key, default=None)
+</code></pre>
+
+<p>Проверка на существование ключа.</p>
+
+<pre><code>dict.has_key(key)  # only for Python 2!
+</code></pre>
+
+<h3>Получение всех ключей словаря.</h3>
+
+<pre><code>print(dict.keys())
+
+&gt;&gt; dict_items([('two', [1, 2, 3]), ('one', [1, 2, 3]), ('three', [1, 2, 3])]) # python 3
+&gt;&gt; [('three', [1, 2, 3]), ('two', [1, 2, 3]), ('one', [1, 2, 3])] # python 2
+</code></pre>
+
+<h3>Получение всех значений словаря.</h3>
+
+<pre><code>print(dict.values())
+&gt;&gt; dict_values([[1, 2, 3], [1, 2, 3], [1, 2, 3]]) # python 3
+&gt;&gt; [[1, 2, 3], [1, 2, 3], [1, 2, 3]] # python 2
+</code></pre>
+
+<h3>Получение всех ключей-значений словаря.</h3>
+
+<pre><code>print(dict.items())
+
+&gt;&gt; dict_items([('two', [1, 2, 3]), ('one', [1, 2, 3]), ('three', [1, 2, 3])]) # python 3
+&gt;&gt; [('three', [1, 2, 3]), ('two', [1, 2, 3]), ('one', [1, 2, 3])] # python 2
+</code></pre>
+
+<h2>Обход словаря в цикле.</h2>
+
+<pre><code>for key, value in d.iteritems(): # For Python 2.x
+
+for key, value in d.items(): $ for Python 3.x
+</code></pre>
+
+<h3>Альтернативный способ обхода по ключам <strong>dict.keys()</strong>.</h3>
+
+<pre><code>for key in d3.keys():
+    print(d3[key])
+</code></pre>
+
+<h3>Массовое обновление словаря словарем.</h3>
+
+<pre><code>dict.update(dict2)
+</code></pre>
+
+<p>Функция НЕ возвращает а изменяет словарь.</p>
+
+<h3>Преобразование словаря в строку json.</h3>
+
+<pre><code>import json
+
+json.dumps({"one": 1, "two": '2'})
+</code></pre>
+
+<p>Запишем в файл.</p>
+
+<pre><code># write into file
+f = open('tst.txt','w+')
+f.write(s1)
+f.close()
+</code></pre>
+
+<p>Для записи строки ее нужно преобразовывать из объекта словаря в строку функцией dumps.</p>
+
+<p>Считаем из файла.</p>
+
+<pre><code># read from file
+f = open('tst.txt','r')
+st = f.read()
+f.close()
+st_dict = json.loads(st)
+print(st_dict['two'])
+</code></pre>
+
+<p>Для работы со словарем его необходимо преобразовывать из строки в объект ф-цией loads.        </p>

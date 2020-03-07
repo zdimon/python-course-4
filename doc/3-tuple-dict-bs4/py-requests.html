@@ -1,0 +1,27 @@
+<h2>Библиотека requests.</h2>
+
+<p><a href="https://2.python-requests.org//en/master/">дока</a></p>
+
+<p>Установка.</p>
+
+<pre><code>pip install requests
+</code></pre>
+
+<h2>Использование.</h2>
+
+<pre><code>import requests
+</code></pre>
+
+<p>Запрос с передачей хэдеров.</p>
+
+<pre><code>r=requests.get(url, headers={"key":"val"})
+print(t.text)
+</code></pre>
+
+<h2>POST запрос</h2>
+
+<pre><code>url = 'https://webmonstr.com/ru/login/'
+data = {"username": "test", "password": "test"}
+r = requests.post(url,data=data)
+print(r.text)
+</code></pre>

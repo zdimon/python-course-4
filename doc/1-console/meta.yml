@@ -1,0 +1,135 @@
+slug: python-begginer-get-started
+name: Урок 1. Первые шаги Python.
+meta_title: Первые шаги Python.
+meta_keywords: Первые шаги Python.
+meta_description: Первые шаги Python.
+is_active: true
+desc: |
+
+    Работа в консоле.
+    Основы Python. 
+        
+files:
+    -
+        file:     'py-history.md'
+        title: 'История языка. Приемущества и недостатки.'
+        meta_title: 'История языка. Приемущества и недостатки.'
+        meta_description:   'История языка. Приемущества и недостатки.'
+        meta_keywords: 'История языка. Приемущества и недостатки.'
+        desc: 
+
+    -
+        file:     'py-intro.md'
+        title: 'Введение.'
+        meta_title: 'Введение.'
+        meta_description:   'Введение.'
+        meta_keywords: 'Введение.'
+        desc: 
+        
+    -
+        file:     'bash-console.md'
+        title: 'Работа в консоле. Команды bash.'
+        meta_title: 'Работа в консоле. Команды bash'
+        meta_description:   'Работа в консоле.'
+        meta_keywords: 'Работа в консоле.'
+        desc: |
+        
+            - смена директории
+            
+            - просмотр директории
+            
+            - создание директории\файлов
+    
+            - системные переменные
+            
+            - запуск скриптов
+  
+    -
+        file:     'python-data-type.md'
+        title: 'Python. Типы данных.'
+        meta_title: 'Python. Типы данных.'
+        meta_description:   'Python. Типы данных.'
+        meta_keywords: 'home python data type'
+        desc: |  
+        
+    -
+        file:     'prg-console-input-if.md'
+        title: 'Ввод данных с клавиатуры. Первая программа с условием.'
+        meta_title: 'Ввод данных с клавиатуры. Первая программа с условием.'
+        meta_description:   'Ввод данных с клавиатуры. Первая программа с условием.'
+        meta_keywords: 'python input if'
+        desc: |
+        
+        
+    -
+        file:     'prg-console-input-loop.md'
+        title: 'Ввод данных с клавиатуры. Первая программа с циклом.'
+        meta_title: 'Ввод данных с клавиатуры. Первая программа с циклом.'
+        meta_description:   'Ввод данных с клавиатуры. Первая программа с циклом.'
+        meta_keywords: 'python input loop'
+        desc: |
+            
+    -
+        file:     'py-input.md'
+        title: 'Ввод данных с клавиатуры.'
+        meta_title: 'Ввод данных с клавиатуры.'
+        meta_description:   'Ввод данных с клавиатуры.'
+        meta_keywords: 'python input'
+        desc: |
+            
+    -
+        file:     'python-sys-for-if.md'
+        title: 'Интерактивный режим. Основные конструкции языка.'
+        meta_title: 'Python. Циклы условия.'
+        meta_description:   'Python. Циклы условия.'
+        meta_keywords: 'питон цикл условия sys'
+        desc: |
+        
+            - Интерактивный режим.
+            
+            - Числа, строки, логические переменные.
+            
+            - Библиотека sys и аргумены командной строки.        
+            
+    -
+        file:     'python-dict.md'
+        title: 'Python. Словари.'
+        meta_title: 'Python. Словари.'
+        meta_description:   'Python. Словари.'
+        meta_keywords: 'питон словарь'
+        desc: |
+        
+            - определение словаря.
+            
+            - операции со словарем.
+                      
+     
+    -
+        file:     'python-console-home.md'
+        title: 'Python. Домашнее задание.'
+        meta_title: 'Python. Домашнее задание.'
+        meta_description:   'Python. Домашнее задание.'
+        meta_keywords: 'home python console'
+        desc: |
+                  
+            
+    -
+        file:     'record-1.md'
+        title: 'Запись лекции 1.'
+        meta_title: 'Запись лекции.'
+        meta_description:   'Запись лекции.'
+        meta_keywords: 'record python console'
+        desc: |
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                
+            
+      

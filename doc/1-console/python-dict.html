@@ -1,0 +1,49 @@
+<h2>Определение словаря</h2>
+
+<pre><code>mydict = {"one": 1 "two": 2}
+print(mydict)
+</code></pre>
+
+<h2>Получение элемента по ключу.</h2>
+
+<pre><code>mydict['one']
+</code></pre>
+
+<h2>Добавление пар ключ-значение.</h2>
+
+<pre><code>mydict['three'] = 3
+</code></pre>
+
+<h2>Удаление.</h2>
+
+<pre><code>del mydict['one']
+</code></pre>
+
+<h2>Вложенный список в словаре.</h2>
+
+<pre><code>lst = range(5)
+mydict['lst'] = lst
+</code></pre>
+
+<h2>Цикл по парам словаря.</h2>
+
+<pre><code>for v in mydict:
+    print v
+
+for k,v in mydict.iteritems():
+   print k
+   print v
+</code></pre>
+
+<h2>Изменение словарей.</h2>
+
+<pre><code> mydict = otherdict
+ mydict['add'] = 2
+ otherdict['add'] # выдаст 2
+</code></pre>
+
+<p>При присваивании создается ссылка на одно и то же место в памяти.
+Чтобы клонировать словарь в новую переменную необходимо использовать функцию copy().</p>
+
+<pre><code>new = mydict.copy()
+</code></pre>

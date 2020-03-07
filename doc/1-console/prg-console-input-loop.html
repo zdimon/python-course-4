@@ -1,0 +1,42 @@
+<h1>Первая программа с циклом.'</h1>
+
+<p><img src="https://webmonstr.com/media/course/python-beginner/ru/1-console/images/2.png" alt="if loop" />  </p>
+
+<pre><code>print("Начало программы")
+lst = ["Как вас зовут?",
+"Какой ваш вес?",
+"Какой ваш рост?"]
+
+answers = []
+
+for i in lst: 
+    print(i)
+    answer = input()
+    answers.append(answer)
+
+print("Конец программы")
+print(answers)
+</code></pre>
+
+<p><img src="https://webmonstr.com/media/course/python-beginner/ru/1-console/images/3.png" alt="if loop" />                </p>
+
+<pre><code>print("Начало программы")
+lst = ["Как вас зовут?",
+"Какой ваш вес?",
+"Какой ваш рост?"]
+
+answers = []
+
+data = {'answers': answers, 'questions': lst}
+
+#data['answers'] = answers
+#data['questions'] = lst
+
+for i in data['questions']: 
+    print(i)
+    answer = input()
+    data['answers'].append(answer)
+
+print("Конец программы")
+print(data)
+</code></pre>

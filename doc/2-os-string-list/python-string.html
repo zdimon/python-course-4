@@ -1,0 +1,118 @@
+<h1>Работа со строками.</h1>
+
+<p><a href="https://docs.python.org/2/library/string.html">Ссылка на документацию</a></p>
+
+<h2>Доступ по ключу, срез.</h2>
+
+<pre><code>ms = 'My string'
+print(ms[0])
+print(ms[0:3])
+</code></pre>
+
+<p>Пробуем поменять символ.</p>
+
+<pre><code>ms[1] = 'e'
+
+TypeError: 'str' object does not support item assignment
+</code></pre>
+
+<p>Строка это неизменяемый тип, поэтому изменять нужно функциями (методами), которые возвращают новый, 
+измененный экземпляр строки.</p>
+
+<p>Например.</p>
+
+<pre><code>ns = ms.replace('M','W')
+&gt;&gt; Yy string
+</code></pre>
+
+<h2>Форматирование строк.</h2>
+
+<p><a href="https://docs.python.org/3.4/library/string.html">Типы операций со строками</a></p>
+
+<p>Форматирование можно сделать с помощью оператора %, либо с помощью метода format.</p>
+
+<h3>Знак <strong>%</strong></h3>
+
+<pre><code>s = 'hello %s' % 'dima'
+d = 'hello %s your number is %d' % ('dima', '4')
+</code></pre>
+
+<h3>Оператор format.</h3>
+
+<pre><code>'{}, {}, {}'.format('a', 'b', 'c')  # 2.7+ only
+'{0}, {1}, {2}'.format('a', 'b', 'c')
+'{2}, {1}, {0}'.format('a', 'b', 'c')
+</code></pre>
+
+<p>Любая строка это объект питон со всеми атрибутами и методами поэтому 
+вызывать методы можно стразу позле определения строки после кавычек.    </p>
+
+<h3>Проверка типов.</h3>
+
+<pre><code>str = 'x = {x_coord}, y = {y_coord:d}'.format(x_coord=23,y_coord=56)
+</code></pre>
+
+<p>Форматирование числа.</p>
+
+<pre><code>{:,}'.format(1234567890)
+</code></pre>
+
+<p>Приведение к одному формату (с нулями впереди).</p>
+
+<pre><code>month = '{:02d}'.format(3)
+</code></pre>
+
+<p>Отсечение чисел после запятой.</p>
+
+<pre><code>print('{:.2f}'.format(222.3333))
+</code></pre>
+
+<h3>Форматирование даты.</h3>
+
+<pre><code>import datetime
+n = datetime.datetime.now()
+'{:%Y-%m-%d %H:%M:%S}'.format(n)
+</code></pre>
+
+<h3>Разбиение</h3>
+
+<pre><code>s = 'one,two,three'.split(',')
+</code></pre>
+
+<h3>Слияние</h3>
+
+<pre><code>'-'.join(s)
+</code></pre>
+
+<h3>Поиск</h3>
+
+<pre><code>string.find(s)
+string.rfind(s)
+</code></pre>
+
+<p>Возвращает число (позиция) первого вхождения или -1 при неудаче.</p>
+
+<pre><code>string.index(s)
+</code></pre>
+
+<p>Работает так же как find но вызывает исключение при ненахождении.</p>
+
+<h3>Поиск по регулярным выражениям.</h3>
+
+<pre><code>import re
+str = 'My name is dima. My name is dima.'
+rez = re.search('is(.*)\.',str)
+print(rez.group(1))
+</code></pre>
+
+<p><a href="https://docs.python.org/3/library/re.html">Документация по регулярным выражениям</a> </p>
+
+<h2>Изменение регистра</h2>
+
+<pre><code>str.capitalize(); str.lower(); str.upper()
+</code></pre>
+
+<h2>Убираем пробелы вначале и в конце.</h2>
+
+<pre><code>'   spacious   '.strip()
+</code></pre>

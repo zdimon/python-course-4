@@ -1,0 +1,101 @@
+slug: python-tuple-dict
+name: Урок 3. Кортежи. Словари.
+meta_title:  Питон. Кортежи. Словари.
+meta_keywords: Питон. Кортежи. Словари.
+meta_description:  Питон. Кортежи. Словари.
+is_active: true
+desc: |
+
+    Приемы работы со словарями и кортежами. 
+    
+
+        
+        
+files:
+
+    -
+        file:     'sh-venv.md'
+        title: 'Bash и виртуальное окружение Python'
+        meta_title: 'Bash и виртуальное окружение Python'
+        meta_description:   'Bash и виртуальное окружение Python'
+        meta_keywords: 'python dict'
+        desc: |
+        
+    -
+        file:     'py-dict.md'
+        title: 'Словари.'
+        meta_title: 'Словари. Python.'
+        meta_description:   'Словари. Python.'
+        meta_keywords: 'python dict'
+        desc: |
+        
+            - определение словаря
+            
+            - проход по словарю
+            
+            - изменение словаря
+    
+            - сохранение и чтение словарей в формате json
+            
+            - методы словарей
+            
+    -
+        file:     'py-virtualenv.md'
+        title: 'Виртуальное окружение. Установщик PIP.'
+        meta_title: 'Виртуальное окружение. Установщик PIP.'
+        meta_description:   'Виртуальное окружение. Установщик PIP.'
+        meta_keywords: 'python virtual environment'
+        desc: |     
+        
+            - установка
+            
+            - использование
+            
+            
+    -
+        file:     'py-requests.md'
+        title: 'Библиотека requests.'
+        meta_title: 'Библиотека requests.'
+        meta_description:   'Библиотека requests.'
+        meta_keywords: 'python request requests'
+        desc: |     
+        
+            - установка
+            
+            - использование
+            
+            - сессии, куки
+        
+    -
+        file:     'py-bs4.md'
+        title: 'Библиотека beautifulsoup.'
+        meta_title: 'Библиотека beautifulsoup.'
+        meta_description:   'Библиотека beautifulsoup.'
+        meta_keywords: 'python bs4 beautifulsoup'
+        desc: |     
+        
+            - установка
+            
+            - поиск элементов
+            
+    -
+        file:     'network.md'
+        title: 'Сети'
+        meta_title: 'Сети'
+        meta_description:   'Сети'
+        meta_keywords: 'python dict'
+        desc: |
+                 
+    -
+        file:     'home.md'
+        title: 'Домашнее задание. Игра "очко".'
+        meta_title: 'Домашнее задание. Игра "очко".'
+        meta_description:   'Домашнее задание. Игра "очко".'
+        meta_keywords: 'Домашнее задание. Игра "очко".'
+        desc: |     
+        
+        
+        
+        
+        
+

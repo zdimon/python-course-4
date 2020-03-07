@@ -1,0 +1,77 @@
+<h2>Библиотека BeatifulSoup.</h2>
+
+<p>Установка.</p>
+
+<pre><code>pip install bs4
+</code></pre>
+
+<h3>Чтение DOM.</h3>
+
+<pre><code>from bs4 import BeautifulSoup
+soup = BeautifulSoup(html_doc, 'html.parser')
+</code></pre>
+
+<p>Заголовок документа.</p>
+
+<pre><code>soup.title.string
+</code></pre>
+
+<h3>Поиск одного и группы элементов.</h3>
+
+<pre><code>el = soup.find('h1')
+</code></pre>
+
+<p>Найдем все ссылки на странице.</p>
+
+<pre><code>soup.findAll('a')
+</code></pre>
+
+<p>Доступ к тексту и атрибутам тега.</p>
+
+<pre><code>link.get('href')
+link.text
+</code></pre>
+
+<p>Проход по массиву</p>
+
+<pre><code>for link in soup.findAll('a'):
+    print(link.get('href'))
+</code></pre>
+
+<p>Поиск одного элемента по id.</p>
+
+<pre><code>el = soup.find('h1',{'id': 'my-header'})
+</code></pre>
+
+<p>Поиск многих элементов по имени класса.</p>
+
+<pre><code>els = soup.findAll('div',{'class': 'class_name'})
+</code></pre>
+
+<p>по нескольким классам</p>
+
+<pre><code>show = soup.find('div', class_='action-link showPhonesLink')
+show = soup.find('div', attrs={'class': 'action-link showPhonesLink'})
+</code></pre>
+
+<p>Поиск по css атрибутам.</p>
+
+<pre><code>els = soup.findAll('div',attrs={'id': '123'})
+</code></pre>
+
+<h3>Метод select</h3>
+
+<pre><code>results = soup.select('td[valign="top"]')
+</code></pre>
+
+<ul>
+<li>возвращает массив</li>
+</ul>
+
+<h3>Задача</h3>
+
+<p>Вытащить все области и раены Казахстана и сохранить их в json файле.</p>
+
+<p>http://sud.gov.kz/rus</p>
+
+<p>http://sud.gov.kz/rus/bank</p>

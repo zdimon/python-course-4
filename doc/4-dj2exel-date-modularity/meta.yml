@@ -1,0 +1,85 @@
+slug: python-functions-class
+name: Функции. Классы.
+meta_title: Функции. Классы.
+meta_keywords: Функции. Классы.
+meta_description: Функции. Классы.
+is_active: true
+desc: |
+
+
+files:
+
+
+        
+    -
+        file:     'functions_args_kwargs.md'
+        title: 'Функции и их аргуметы'
+        meta_title: 'Функции и их аргуметы'
+        meta_description:   'Функции и их аргуметы'
+        meta_keywords: 'python function'
+        desc: |
+        
+            
+    -
+        file:     'py-buildinfunc.md'
+        title: 'Встроенные функции Python.'
+        meta_title: 'Встроенные функции Python.'
+        meta_description:   'Встроенные функции Python.'
+        meta_keywords: 'python buildin functions'
+        desc: |
+        
+        
+    -
+        file:     'py-class.md'
+        title: 'Классы'
+        meta_title: 'Классы'
+        meta_description:   'Классы'
+        meta_keywords: 'python class'
+        desc: |        
+        
+            
+    -
+        file:     'py-modularity.md'
+        title: 'Модульная система Python.'
+        meta_title: 'Модульная система Python.'
+        meta_description:   'Модульная система Python.'
+        meta_keywords: 'python modularity'
+        desc: |
+        
+
+                
+            
+    -
+        file:     'py-date.md'
+        title: 'Python работа с датой.'
+        meta_title: 'Python работа с датой.'
+        meta_description:   'Python работа с датой.'
+        meta_keywords: 'python date'
+        desc: |
+        
+            - текущая дата
+            
+            - промежуток
+            
+    -
+        file:     'bash-git.md'
+        title: 'Консоль. Работа с git.'
+        meta_title: 'Консоль. Работа с git.'
+        meta_description:   'Консоль. Работа с git.'
+        meta_keywords: 'bash git console'
+        desc: 
+            
+    -
+        file:     'home.md'
+        title: 'Python домашнее задание.'
+        meta_title: 'Python домашнее задание.'
+        meta_description:   'Python домашнее задание.'
+        meta_keywords: 'python home'
+        desc: |
+        
+            - текущая дата
+            
+            - промежуток
+            
+            
+
