@@ -1,0 +1,1 @@
+{"users": [{"id": 1, "name": "Dima", "age": 345}, {"id": 2, "name": "Vova", "age": 23}], "messages": [{"text": "Hello", "user_id": 2}, {"text": "Hello2", "user_id": 2}], "books": [{"id": 1, "title": "World"}, {"id": 2, "title": "World 2"}], "book2user": [{"user_id": 1, "book_id": 2}, {"user_id": 2, "book_id": 2}]}

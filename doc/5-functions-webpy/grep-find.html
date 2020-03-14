@@ -1,0 +1,118 @@
+<h1>Работа в консоле. Команды bash.</h1>
+
+<h2>Команда grep</h2>
+
+<p>Поиск файлов или строки в файле по шаблону.</p>
+
+<pre><code>grep "шаблон поиска" "file_name"
+</code></pre>
+
+<p>-r Поиск рекурсивно по всем файлам в указанной директории. Пример:</p>
+
+<pre><code>grep -r webmonstr /home/zdimon
+</code></pre>
+
+<p>Будет искать и в подкаталогах.</p>
+
+<h2>Реверсивный поиск.</h2>
+
+<pre><code>grep -r -v test
+</code></pre>
+
+<h2>Регулярные выражения</h2>
+
+<p>В начале или конце строки.</p>
+
+<pre><code>grep '^t' 1.txt
+grep 't$' 1.txt
+</code></pre>
+
+<p>Только строки с ip:</p>
+
+<pre><code>grep -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" /etc/resolv.conf
+</code></pre>
+
+<p>-E - extended regular expression (ERE)</p>
+
+<p>Посмотреть строки в окресности искомой.</p>
+
+<pre><code>grep -n -C 1 test 1.txt
+</code></pre>
+
+<h2>Полезные ключи</h2>
+
+<p>-n - отображать номера строк.</p>
+
+<p>-w - поиск шаблона как отдельного слова</p>
+
+<h2>Полезные комбинации</h2>
+
+<p>Найти процесс по порту.</p>
+
+<pre><code>netstat -nlp | grep :80
+</code></pre>
+
+<p>Найти процесс по имени</p>
+
+<pre><code>ps -afx | grep python
+</code></pre>
+
+<p>Найти файлы по расширению.</p>
+
+<pre><code>ls | grep '.txt$'
+</code></pre>
+
+<h2>Поиск файлов. Команда find.</h2>
+
+<p>Без параметров выводит все файлы и каталоги текущей директории.</p>
+
+<pre><code>find
+find .
+</code></pre>
+
+<h3>Фильтры</h3>
+
+<p>Одни файлы.</p>
+
+<pre><code>find -type f
+</code></pre>
+
+<p>По маске имени.</p>
+
+<pre><code>find -type f -name '*.txt'
+</code></pre>
+
+<p>Без учета регистра.</p>
+
+<pre><code>find -type f -iname '*.txT'
+</code></pre>
+
+<p>Поиск по нескольким шаблонам.</p>
+
+<pre><code>find -name "*.txt" -or -name "*.dat" -type f
+</code></pre>
+
+<p>Поиск с исключением файлов по маске.</p>
+
+<pre><code>find -not -name "*.txt" -type f
+</code></pre>
+
+<h2>Опция удаления.</h2>
+
+<pre><code>find -name "*.sql" -type f -delete
+</code></pre>
+
+<p>Удаление по расширению.</p>
+
+<pre><code>find . -name "*.bak" -type f -delete
+</code></pre>
+
+<p>Поиск в файлах с заданной маской.</p>
+
+<pre><code>find -name "*.txt" -type f | grep -rn test
+</code></pre>
+
+<p>Поиск файлов по маске.</p>
+
+<pre><code> find . | grep -e "\.txt$"
+</code></pre>

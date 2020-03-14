@@ -1,0 +1,55 @@
+slug: python-webpy
+name: Простое веб приложение на web.py.
+meta_title: Простое веб приложение на web.py.
+meta_keywords: Простое веб приложение на web.py.
+meta_description: Простое веб приложение на web.py.
+is_active: true
+desc: |
+
+    Создание веб-сервера с использованием web.py.
+    
+
+files:
+
+    -
+        file:     'grep-find.md'
+        title: 'Работа в консоле. Команды bash (grep, find).'
+        meta_title: 'Работа в консоле. Команды bash (grep, find).'
+        meta_description:   'Работа в консоле. Команды bash (grep, find).'
+        meta_keywords: 'Работа в консоле. Команды bash (grep, find).'
+        desc: |
+        
+    -
+        file:     'bash-user-privilege.md'
+        title: 'Консоль. Привилегии пользователей.'
+        meta_title: 'Консоль. Привилегии пользователей.'
+        meta_description:   'Консоль. Привилегии пользователей.'
+        meta_keywords: 'Консоль. Привилегии пользователей.'
+        desc: |
+        
+    -
+        file:     'recursion-coctail.md'
+        title: 'Рекурсивный коктейль.'
+        meta_title: 'Рекурсивный коктейль.'
+        meta_description:   'Рекурсивный коктейль.'
+        meta_keywords: 'Рекурсивный коктейль.'
+        desc: |
+
+    -
+        file:     'ssh.md'
+        title: 'Работа с сервером по ssh.'
+        meta_title: 'Работа с сервером по ssh.'
+        meta_description:   'Работа с сервером по ssh.'
+        meta_keywords: 'Работа с сервером по ssh.'
+        desc: |
+
+
+
+    -
+        file:     'web-py.md'
+        title: 'Веб-сервер на web.py'
+        meta_title: 'Веб-сервер на web.py'
+        meta_description:   'Веб-сервер на web.py'
+        meta_keywords: 'python web.py'
+        desc: |
+       

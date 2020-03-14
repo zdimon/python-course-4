@@ -1,0 +1,210 @@
+<h2>Декораторы</h2>
+
+<p>Декораторы - это такая конструкция языка, которая может изменить поведение функции, метода, класса и т.д. не изменяя ее саму.</p>
+
+<p>Это идеальный способ что то изменить в программе без модификации кода изменяемого объекта.</p>
+
+<p>Разберем процесс декорирования функции.</p>
+
+<p>Для начала, рассмотрим некоторые особенности функций.</p>
+
+<h3>Присвоение функции переменной.</h3>
+
+<pre><code>def greet(name):
+    return "hello "+name
+
+greet_someone = greet
+print greet_someone("John")
+
+# Outputs: hello John
+</code></pre>
+
+<p>Как видно, функция может быть присвоена переменной как обычное значение и следовательно быть передана как параметр другой функции.</p>
+
+<h3>Определение функции внутри другой функции.</h3>
+
+<pre><code>def greet(name):
+    def get_message():
+        return "Hello %s" % name
+    result = get_message()+'!'
+    return result
+print greet("John")
+
+# Outputs: Hello John
+</code></pre>
+
+<p>При определении внутренней функции все переменные, переданные во внешнюю, буду сохранены во внутреннем пространстве (замыкании)
+внешней функции и доступны из внутренней.</p>
+
+<h3>Передача функции как параметра другой функции.</h3>
+
+<pre><code>def greet(name):
+   return "Hello " + name 
+
+def call_func(func):
+    other_name = "John"
+    return func(other_name)  
+
+print call_func(greet)
+
+# Outputs: Hello John
+</code></pre>
+
+<p>Функция может быть передана параметром и быть вызвана изнутри той функции, в которую была передана.</p>
+
+<h3>Функция может возвращать другую функцию.</h3>
+
+<p>Иными словами - функция может создавать функцию.</p>
+
+<pre><code>def compose_greet_func():
+    def get_message():
+        return "Hello there!"
+
+    return get_message
+
+greet = compose_greet_func()
+print greet()
+
+# Outputs: Hello there!
+</code></pre>
+
+<h3>Внутрення функция имеет доступ к замыкающему пространству имен внешней.</h3>
+
+<pre><code>def compose_greet_func(name):
+    def get_message():
+        return "Hello there "+name+"!"
+
+    return get_message
+
+greet = compose_greet_func("John")
+print greet()
+
+# Outputs: Hello there John!
+</code></pre>
+
+<p>Обратите внимание на то как мы забираем переменную name из замыкания и возвращаем внутреннюю функцию.</p>
+
+<p>В момент вызова <strong>greet = compose<em>greet</em>func("John")</strong> в greet будет находится строка "John".</p>
+
+<h3>Декоратор.</h3>
+
+<p>Давайте совместим идеи, изложенные выше и построим декоратор.</p>
+
+<p>Putting the ideas mentioned above together, we can build a decorator.
+In this example let's consider a function that wraps the string output of another function by p tags.</p>
+
+<p>В примере предположим, что нам необходимо изменить вывод функции get_text, заключив
+ее вывод в тэги <p></p>.</p>
+
+<pre><code>def get_text(name):
+   return "Hello, {0}".format(name)
+
+def p_decorate(func):
+   def func_wrapper(name):
+       return "&lt;p&gt;{0}&lt;/p&gt;".format(func(name))
+   return func_wrapper
+
+my_get_text = p_decorate(get_text)
+
+print my_get_text("John")
+
+# &lt;p&gt;Hello, John&lt;/p&gt;
+</code></pre>
+
+<p>Это и был наш первый декоратор.
+Т.е. функция-декоратор, принимающаю другую (декорируемую) функцию в качестве аргумента и изменяющая ее поведение.
+Поведение изменяется внутри вложенной функции декоратора строкой <strong>return "<p>{0}</p>".format(func(name))</strong>.
+При этом мы вызываем декорируемую функцию в том месте, где хотим получить ее результат.
+В конце возвращаем эту вложенную функцию, которая называется оберткой (wrapper).</p>
+
+<h3>Синтаксис декоратора в Python.</h3>
+
+<p>Применение декоратора может быть упрощено использованием знака @.</p>
+
+<p>Этот знак - эквивалент процедуры <strong>my<em>get</em>text = p<em>decorate(get</em>text)</strong> из примера выше.</p>
+
+<pre><code>def p_decorate(func):
+   def func_wrapper(name):
+       return "&lt;p&gt;{0}&lt;/p&gt;".format(func(name))
+   return func_wrapper
+
+@p_decorate
+def get_text(name):
+   return "lorem ipsum, {0} dolor sit amet".format(name)
+
+print get_text("John")
+
+# Outputs &lt;p&gt;lorem ipsum, John dolor sit amet&lt;/p&gt;
+</code></pre>
+
+<p>Now let's consider we wanted to decorate our get_text function by 3 other functions.</p>
+
+<p>Теперь представим, что нам нужно задекорировать не одной а тремя функциями последовательно, добавив дополнительные теги strong и div.</p>
+
+<p>Определим эти три функции-декоратора.</p>
+
+<pre><code>def p_decorate(func):
+   def func_wrapper(name):
+       return "&lt;p&gt;{0}&lt;/p&gt;".format(func(name))
+   return func_wrapper
+
+def strong_decorate(func):
+    def func_wrapper(name):
+        return "&lt;strong&gt;{0}&lt;/strong&gt;".format(func(name))
+    return func_wrapper
+
+def div_decorate(func):
+    def func_wrapper(name):
+        return "&lt;div&gt;{0}&lt;/div&gt;".format(func(name))
+    return func_wrapper
+</code></pre>
+
+<p>With the basic approach, decorating get_text would be along the lines of</p>
+
+<p>При стандартном подходе, чтобы задекорировать всеми тремя нужно выполнить такой код:</p>
+
+<pre><code>get_text = div_decorate(p_decorate(strong_decorate(get_text)))
+</code></pre>
+
+<p>Однако при использовании синтаксиса декоратора Python это можно написать гораздо проще и понятней.</p>
+
+<pre><code>@div_decorate
+@p_decorate
+@strong_decorate
+def get_text(name):
+   return "lorem ipsum, {0} dolor sit amet".format(name)
+
+print get_text("John")
+
+# Outputs &lt;div&gt;&lt;p&gt;&lt;strong&gt;lorem ipsum, John dolor sit amet&lt;/strong&gt;&lt;/p&gt;&lt;/div&gt;
+</code></pre>
+
+<h3>Декораторы с аргументом.</h3>
+
+<p>Что если нам нужно менять тег, в который мы помещаем вывод декорируемой функции из примеров выше.</p>
+
+<p>Очевидно, для этого тег необходимо передавать в качестве параметра декоратору:</p>
+
+<pre><code>def decorator(opentag,closetag):
+
+    def real_decorator(decfunc):
+
+        def wrapper(name):
+
+            return opentag+' '+ decfunc(name) +' '+closetag
+
+        return wrapper
+
+
+    return real_decorator
+</code></pre>
+
+<p>В таком случае, при декорировании, передаем эти параметры:       </p>
+
+<pre><code>@decorator('&lt;h1&gt;','&lt;/h1&gt;') 
+def myf(name):
+    return name
+
+
+print myf('Dima')
+</code></pre>

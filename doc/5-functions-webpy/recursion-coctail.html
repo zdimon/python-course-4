@@ -1,0 +1,39 @@
+<h1>Рекурсивный коктейль.</h1>
+
+<p>Состоит из 30% воды 20% спирта и 50% рекурсивного коктеля :-).</p>
+
+<pre><code>print("Making recousion coctail!!!")
+
+def make(water,alcohol):
+    mix = 0
+    mix = mix + (water*30)
+    mix = mix + (alcohol*20)
+    mix = mix + (make(water,alcohol)*50)
+    return mix
+
+print(make(4,5))
+</code></pre>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <p>RuntimeError: maximum recursion depth exceeded</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Добавим счетчик итерации и ограничим рекурсию.</p>
+
+<pre><code>def make(water,alcohol,cnt):
+    cnt += 1
+    mix = 0
+    mix = mix + (water*30)
+    mix = mix + (alcohol*20)
+    if cnt &gt;10:
+        return mix
+    mix = mix + (make(water,alcohol,cnt)*50)
+    return mix
+
+cnt = 0    
+print(make(4,5,cnt))
+</code></pre>

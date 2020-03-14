@@ -1,0 +1,218 @@
+<h1>Классы</h1>
+
+<p>Класс - это проект объекта.</p>
+
+<p>Классы состоят из свойств и методов.</p>
+
+<p>Свойства - переменные класса.</p>
+
+<p>Методы - функции класса.</p>
+
+<p>Простейшая форма определения класса:</p>
+
+<pre><code>class ClassName(object):
+    &lt;statement-1&gt;
+    .
+    .
+    .
+    &lt;statement-N&gt;
+</code></pre>
+
+<p>В скобках мы указываем от чего наследуется класс. </p>
+
+<p>В python 3 указание (object) не обязательно.</p>
+
+<p>Имя должно быть с заглавной буквы. </p>
+
+<p>При наследовании класс-потомок получает все методы и свойства от родительского.</p>
+
+<p>Пример класса.</p>
+
+<pre><code>class MyClass(object):
+    """docstring - a simple example class"""
+    i = 12345
+    def f(self):
+        return 'hello world'
+
+
+x = MyClass()
+</code></pre>
+
+<p>В питоне все является объектами какого либо класса.</p>
+
+<p>Для того, чтобы посмотреть структуру объекта можно воспользоваться функцией dir().</p>
+
+<pre><code>print(dir(object))
+</code></pre>
+
+<p>Результат вывода структуры объекна целого числа.</p>
+
+<pre><code>dir(3)
+
+&gt;&gt;&gt; ['__abs__', '__add__', '__and__', '__class__', '__cmp__', '__coerce__', '__delattr__', '__div__', '__divmod__', '__doc__', '__float__', '__floordiv__', '__format__', '__getattribute__', '__getnewargs__', '__hash__', '__hex__', '__index__', '__init__', '__int__', '__invert__', '__long__', '__lshift__', '__mod__', '__mul__', '__neg__', '__new__', '__nonzero__', '__oct__', '__or__', '__pos__', '__pow__', '__radd__', '__rand__', '__rdiv__', '__rdivmod__', '__reduce__', '__reduce_ex__', '__repr__', '__rfloordiv__', '__rlshift__', '__rmod__', '__rmul__', '__ror__', '__rpow__', '__rrshift__', '__rshift__', '__rsub__', '__rtruediv__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__truediv__', '__trunc__', '__xor__', 'bit_length', 'conjugate', 'denominator', 'imag', 'numerator', 'real']
+</code></pre>
+
+<p>С подчеркивания начинаются служебные (внутренние) методы, которые программисту вызывать не нужно.        </p>
+
+<p>У классов есть особый метод, под названием <strong>init</strong> (конструктор).</p>
+
+<p>Этот метод вызывается всякий раз, когда вы создаете (или создаете экземпляр) объект на основе этого класса.</p>
+
+<p>Метод <strong>init</strong> вызывается один раз, и не может быть вызван снова внутри программы. </p>
+
+<p>В этом методе обычно проводят инициализацию свойств создаваемых объектов.</p>
+
+<pre><code>class Animal(object):
+    """docstring"""
+
+    def __init__(self, color, size):
+        """Constructor"""
+        self.color = color
+        self.size = size
+
+
+    def what_color(self):
+        return self.color
+
+## клиентский код    
+cat = Animal('grey','20sm')
+print(cat.what_color())
+</code></pre>
+
+<p>В каждый метод передается обязательный (если метод не статический) параметр self, который представляет будущий объект.</p>
+
+<p>С помощью self мы будем иметь доступ к свойствам объекта как в примере выше.</p>
+
+<h3>Функция <strong>str</strong></h3>
+
+<p>Каждый объект имеет свое строковое представление.</p>
+
+<p>За него отвечает метод <strong>str</strong>.</p>
+
+<p>Напимер этот метод скрыто использует оператор print при попытке вывести объект.</p>
+
+<p>Это очень удобно при одладке.</p>
+
+<p>Например такой код </p>
+
+<pre><code>class Mycl():
+    pass
+
+m = Mycl()
+print(m)
+</code></pre>
+
+<p>Выведет </p>
+
+<pre><code>&gt;&gt;&gt; &lt;__main__.Mycl instance at 0x7ff704c8c488&gt;
+</code></pre>
+
+<p>Что и будет строковым представлением объекта, которого требует оператор print.</p>
+
+<p>Чтобы поменять это представление необходимо определить функцию <strong>str</strong> в которой возвратить желаемую строку.    </p>
+
+<pre><code>class Mycl():
+    def __str__(self):
+        return "This is my class"
+
+m = Mycl()
+print(m)
+
+&gt;&gt;&gt; This is my class
+</code></pre>
+
+<h3>Пример наследования классов.</h3>
+
+<pre><code>class Car(object):
+
+    def __init__(self):
+        self.doors = 2
+
+    def move(self):
+        return 'dr-dr-dr-d'
+
+
+c = Car()
+print c.doors
+
+
+class Lorry(Car):
+
+    def __init__(self):
+        self.color = 'red'
+
+
+l = Lorry()
+print l.color
+print l.doors
+</code></pre>
+
+<p>Получаем ошибку:</p>
+
+<pre><code>AttributeError: 'Lorry' object has no attribute 'doors'
+</code></pre>
+
+<p>Потому, что при наследовании мы потеряли свойство color.</p>
+
+<p>Чтобы этого не происходило, необходимо вызвать конструктор родительского класса Car.</p>
+
+<pre><code>def __init__(self):
+    self.color = 'red'
+    super(Lorry, self).__init__()
+</code></pre>
+
+<h2>Статические методы.</h2>
+
+<p>Наиболее часто-используемые методы классов - это методы объектов (экземпляров).</p>
+
+<p>Что если нам не нужно оперировать экземпляром, а работать с самим классом?</p>
+
+<p>Мы могли бы использовать просты функции. Наример:</p>
+
+<pre><code>def get_no_of_instances(cls):
+    return cls.cnt
+
+class Kls(object):
+    cnt = 0
+    def __init__(self):
+        Kls.cnt = Kls.cnt + 1
+
+
+ik1 = Kls()
+ik2 = Kls()
+
+print(get_no_of_instances(Kls))
+
+&gt;&gt; 2
+</code></pre>
+
+<p>Но при таком подходе мы помещаем функцию, работающую с классом за за его пределами, что плохо для читабельности
+и последующей поддержки.</p>
+
+<p>Чтобы этого избежать используются статические методы классов, в которые не нужно передавать параметр экземпляра self.</p>
+
+<h2>Декоратор @classmethod</h2>
+
+<p>Говорит о том, что мы хотим использовать метод как статический.</p>
+
+<pre><code>class Kls(object):
+    cnt = 0
+
+    def __init__(self):
+        Kls.cnt = Kls.cnt + 1
+
+    @classmethod
+    def get_cnt(cls):
+        return cls.cnt
+
+ik1 = Kls()
+ik2 = Kls()
+
+print ik1.get_cnt()
+print Kls.get_cnt()
+
+&gt;&gt; 2
+</code></pre>
+
+<p>Преимущество такого подхода в том, что от куда бы мы не вызвали статический метод, из класса, или его экземпляра - всегда
+в качестве первого аргумента будет передан сам класс.</p>

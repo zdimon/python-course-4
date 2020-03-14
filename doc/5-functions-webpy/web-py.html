@@ -1,0 +1,139 @@
+<h1>WEB.PY</h1>
+
+<h2>Установка</h2>
+
+<pre><code>pip install web.py
+</code></pre>
+
+<h2>Использование.</h2>
+
+<p>Простейшее веб приложение сервер.</p>
+
+<pre><code>import web
+
+urls = (
+    '/', 'hello'
+)
+
+app = web.application(urls,globals())#1
+
+class hello:
+    def GET(self):
+        return "Hello world!"
+
+if __name__ == "__main__":
+    app.run()
+</code></pre>
+
+<p>1 - globals это функция, возвращающая словарь который содержит все переменные, определенные в глобальном прострастве.</p>
+
+<p>Если она вызывается из функции, то возвратит словарь пространства того модуля, где ф-ция была определена а не где ее вызвали.</p>
+
+<h3>Запуск на порту 8989.</h3>
+
+<pre><code>python server.py 8989
+</code></pre>
+
+<h3>Определение параметра в URL.</h3>
+
+<pre><code>import web
+
+urls = (
+    '/(.*)', 'hello'
+)
+app = web.application(urls, globals()) 
+
+class hello:        
+    def GET(self, name):
+        if not name: 
+            name = 'World'
+        return 'Hello, ' + name + '!'
+
+if __name__ == "__main__":
+    app.run()
+</code></pre>
+
+<p><img src="https://webmonstr.com/media/course/python-beginner/ru/5-functions-webpy/images/1.png" alt="web.py" />     </p>
+
+<h3>URL обработака (роутинг)</h3>
+
+<pre><code>urls = (
+    '/', 'index',
+    /news', 'news',
+    '/view_news/(\d+)', 'view_news',
+
+)
+
+class index: 
+    ...
+class news: 
+    ...
+class view_news: 
+    def GET(self, id):
+        """ View single news """
+        post_id = int(id)
+</code></pre>
+
+<h3>Templating</h3>
+
+<p>Let's make a new directory for our templates (we'll call it templates). 
+Inside, make a new file whose name ends with HTML (we'll call it index.html). 
+Now, inside, you can just write normal HTML</p>
+
+<pre><code>&lt;em&gt;Hello&lt;/em&gt;, world!
+</code></pre>
+
+<p>Or you can use web.py's templating language to add code to your HTML:</p>
+
+<pre><code>$def with (name)
+
+$if name:
+    I just wanted to say &lt;em&gt;hello&lt;/em&gt; to $name.
+$else:
+    &lt;em&gt;Hello&lt;/em&gt;, world!
+</code></pre>
+
+<p>Under the first line, add:</p>
+
+<pre><code>import web
+render = web.template.render('templates/')
+
+
+
+....
+def GET(self, name):
+    return render.index(name)
+</code></pre>
+
+<h2>Databasing</h2>
+
+<h3>Installing MySQLdb</h3>
+
+<pre><code>pip install MySQL-python
+</code></pre>
+
+<p>First you need to create a database object.</p>
+
+<pre><code>db = web.database(dbn='postgres', user='username', pw='password', db='dbname')
+
+
+def GET(self, name):
+    users = db.select('user')
+    out = 'Hello '
+    for u in users:
+        out = out+' '+u.name
+    return out
+</code></pre>
+
+<h3>Output</h3>
+
+<pre><code>Hello  dmitry sergey
+</code></pre>
+
+<h3>Insert records</h3>
+
+<pre><code>class insert:        
+def GET(self, name):
+    n = db.insert('user', name=name)
+    return 'Ok'
+</code></pre>

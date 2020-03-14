@@ -1,0 +1,110 @@
+<h1>Пеликан.</h1>
+
+<p>Инструмент для создания статического сайта.</p>
+
+<p>Хорошо подходит для документаций, блогов и пр.</p>
+
+<p>Позволяет хранить данные в текстовых файлах в формате rtm или md.</p>
+
+<p>Автоматически формирует статичный html, подготавливая сайт к деплою.</p>
+
+<p>Предоставляет много плагинов, включая темы оформления.</p>
+
+<h1>Создание и активирование окружения.</h1>
+
+<pre><code>virtualenv venv
+. ./venv/bin/activate
+</code></pre>
+
+<h1>Установка пакетов.</h1>
+
+<pre><code>pip install pelican markdown
+</code></pre>
+
+<h2>Создание проекта.</h2>
+
+<pre><code>mkdir site
+cd site
+pelican-quickstart
+</code></pre>
+
+<h2>Наполнение контентом.</h2>
+
+<p>Создаем файл статьи в каталоге content/keyboard-review.md.</p>
+
+<pre><code>Title: Заголовок
+Date: 2010-12-03 10:20
+Category: Review
+
+Following is a review of my favorite mechanical keyboard.
+</code></pre>
+
+<h3>Главная страница</h3>
+
+<pre><code>content/pages/home.md:
+
+Title: Welcome to My Site
+URL:
+save_as: index.html
+
+Thank you for visiting. Welcome!
+</code></pre>
+
+<p>Создание страницы и сборка</p>
+
+<pre><code>pelican content
+</code></pre>
+
+<p>Запуск сервера</p>
+
+<pre><code>cd output
+python -m SimpleHTTPServer
+</code></pre>
+
+<h2>Использование плагинов.</h2>
+
+<h3>Темы</h3>
+
+<p>git clone --recursive https://github.com/getpelican/pelican-themes ./themes <br />
+THEME = "themes/bootstrap2"    </p>
+
+<h3>PlantUML плагин</h3>
+
+<p>http://plantuml.sourceforge.net/</p>
+
+<pre><code>#!/bin/bash
+java -jar /opt/plantuml/plantuml.jar ${@}
+</code></pre>
+
+<p>sudo apt-get install graphviz    </p>
+
+<p>PLUGIN_PATHS = ['pelican-plugins']
+PLUGINS = ['plantuml', 'sitemap']</p>
+
+<p>Пример диаграммы.</p>
+
+<pre><code>.. uml::
+
+    @startsalt
+    {
+    {T
+     + &lt;&amp;folder&gt;o_ve
+     ++ &lt;&amp;folder&gt;o
+     +++ &lt;&amp;folder&gt;o
+     +++ &lt;&amp;file&gt;urls.py
+     +++ &lt;&amp;file&gt;wsgi.py
+     +++ &lt;&amp;file&gt;urls.py
+     +++ &lt;&amp;file&gt;settings.py
+     ++ &lt;&amp;folder&gt;blog
+     +++ &lt;&amp;folder&gt;migrations
+     +++ &lt;&amp;file&gt;views.py
+     +++ &lt;&amp;file&gt;tests.py
+     +++ &lt;&amp;file&gt;models.py
+     +++ &lt;&amp;file&gt;admin.py   
+     + &lt;&amp;file&gt;ft.py
+     + &lt;&amp;file&gt;db.sqlite3
+     + &lt;&amp;file&gt;manage.py   
+    }
+    }
+    @endsalt
+</code></pre>
