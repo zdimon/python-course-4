@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>
+            A Simple HTML Document
+        </title>
+    </head>
+    <body>
+        <p>This is a very simple HTML document</p>
+        <p>It only has two paragraphs</p>
+        <form action="/test" method="POST">
+            {% csrf_token %}
+        <ul>
+        {% for question in questions %}
+           <li>
+               {{ question.question }}
+
+               <ul>
+                   {% for ansver in question.answers %}
+                        <li> 
+                            <input type="radio" 
+                              name="{{ question.name }}" 
+                              value="{{ ansver.value }}" 
+                            /> 
+                            {{ ansver.text }}
+                        </li>
+                   {% endfor %}
+               </ul>
+
+           </li>
+        {% endfor %}
+        </ul>
+            <input type="text" name="desc" />
+            <input type="submit" name="Check" />
+
+        </form>
+
+        {% if var == 1 %}
+            var = 1
+        {% endif %}
+
+        <!-- <textarea></textarea>
+        <input type="text" />
+        <input type="checkbox" />
+        <input type="password" />
+
+        <select>
+            <option>one</option>
+            <option>two</option>
+        </select> 
+    -->
+        
+
+    </body>
+</html>
